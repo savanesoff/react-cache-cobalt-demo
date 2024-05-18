@@ -1,9 +1,11 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
 const container = document.getElementById('root');
-const root = createRoot(container!); // `container!` is used to assert that the container is non-null
+if (!container) {
+  throw new Error('Root container missing in index.html');
+}
 
-root.render(<App />);
+ReactDOM.render(<App />, container);

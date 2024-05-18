@@ -14,8 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "core-js": "^3.37.1",
+    "preact": "^10.22.0",
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",

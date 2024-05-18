@@ -3,14 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.tsx',
+    entry: ['core-js/stable', 'regenerator-runtime/runtime', './src/index.tsx'],
     devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    target: 'web',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias: {
+            'react': 'preact/compat',
+            'react-dom/test-utils': 'preact/test-utils',
+            'react-dom': 'preact/compat',
+            'react/jsx-runtime': 'preact/jsx-runtime',
+        },
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     module: {
         rules: [
@@ -28,7 +35,7 @@ module.exports = {
     devServer: {
         static: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000,
+        port: 9500,
     },
     plugins: [
         new HtmlWebpackPlugin({
