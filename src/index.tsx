@@ -1,11 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from 'preact';
+import React from 'preact';
 import './index.css';
 
-const container = document.getElementById('root');
-if (!container) {
-  throw new Error('Root container missing in index.html');
-}
+const App = () => {
+  return (
+    <div
+      className="bg-blue-800"
+      //   style={{
+      //     position: 'absolute',
+      //     width: '100vw',
+      //     height: '100vh',
+      //     // backgroundColor: '#461f1f',
+      //   }}
+    >
+      <div
+        style={{
+          color: 'white',
+        }}
+      >
+        Hello, Preact!
+      </div>
+    </div>
+  );
+};
 
-ReactDOM.render(<App />, container);
+render(<App />, document.getElementById('root'));

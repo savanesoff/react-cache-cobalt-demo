@@ -6,8 +6,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blue: {
+          800: '#1e40af', // Use static value instead of CSS variable
+        },
+      },
+    },
   },
+
   plugins: [
     function ({ addUtilities }) {
       addUtilities({

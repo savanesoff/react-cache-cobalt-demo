@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['core-js/stable', 'regenerator-runtime/runtime', './src/index.tsx'],
+    entry: './src/index.tsx',
     devtool: 'inline-source-map',
     output: {
         filename: 'bundle.js',
@@ -15,20 +16,22 @@ module.exports = {
             'react': 'preact/compat',
             'react-dom/test-utils': 'preact/test-utils',
             'react-dom': 'preact/compat',
-            'react/jsx-runtime': 'preact/jsx-runtime',
+            'react/jsx-runtime': 'preact/jsx-runtime'
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     module: {
         rules: [
             {
-                test: /\.(js|ts|tsx)$/,
-                exclude: /node_modules/,
-                use: 'babel-loader',
+                test: /\.(ts|tsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'swc-loader'
+                }
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
         ],
     },
@@ -41,6 +44,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             scriptLoading: 'blocking',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '*.css',
         }),
     ],
 };
