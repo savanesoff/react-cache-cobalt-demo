@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import { App } from './App';
-import './tailwind.scss';
+import './tailwindcss/styles.scss';
 const container = document.getElementById('root');
 if (!container) {
   throw new Error('No container found');
