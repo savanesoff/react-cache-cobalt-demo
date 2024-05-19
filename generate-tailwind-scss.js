@@ -8,24 +8,29 @@ const fullConfig = resolveConfig(tailwindConfig);
 const generateScssClasses = (theme) => {
     let scssContent = `@import 'tailwindcss/base';\n@import 'tailwindcss/components';\n@import 'tailwindcss/utilities';\n\n`;
 
+    const sanitizeClassName = (className) => {
+        return className.replace(/\//g, '\\/');
+    };
+
     const addClasses = (prefix, themeSection, cssProperty) => {
         const section = theme(themeSection);
         for (const key in section) {
             if (Array.isArray(section[key])) {
-                const className = `${prefix}-${key}`;
+                const className = sanitizeClassName(`${prefix}-${key}`);
                 scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}[0]');\n}\n\n`;
             } else if (typeof section[key] === 'object') {
                 for (const subKey in section[key]) {
-                    const className = `${prefix}-${key}-${subKey}`;
+                    const className = sanitizeClassName(`${prefix}-${key}-${subKey}`);
                     scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}.${subKey}');\n}\n\n`;
                 }
             } else {
-                const className = `${prefix}-${key}`;
+                const className = sanitizeClassName(`${prefix}-${key}`);
                 scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}');\n}\n\n`;
             }
         }
     };
 
+    // Adding classes for various Tailwind properties
     addClasses('bg', 'colors', 'background-color');
     addClasses('text', 'colors', 'color');
     addClasses('border', 'colors', 'border-color');
@@ -69,5 +74,5 @@ const generateScssClasses = (theme) => {
 
 const scssClasses = generateScssClasses((section) => fullConfig.theme[section]);
 
-fs.writeFileSync(path.resolve(__dirname, 'src/tailwindcss/generated-tailwind.scss'), scssClasses);
+fs.writeFileSync(path.resolve(__dirname, 'src/generated-tailwind.scss'), scssClasses);
 console.log('Generated Tailwind SCSS classes successfully.');
