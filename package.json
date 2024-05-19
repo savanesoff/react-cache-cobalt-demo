@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.37.1",
-    "preact": "10.13.1",
+    "preact": "10.22.0",
     "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
