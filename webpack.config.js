@@ -1,24 +1,17 @@
 const path = require('path');
-const webpack = require('webpack')
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-    mode: 'development',
+module.exports = (env, argv) => ({
+    mode: argv.mode || 'development',
     entry: './src/index.tsx',
-    devtool: 'inline-source-map',
     output: {
-        filename: 'bundle.js',
+        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    target: 'web',
+    devtool: argv.mode === 'development' ? 'source-map' : false, // Use 'source-map' for better debugging
     resolve: {
-        // alias: {
-        //     'react': 'preact/compat',
-        //     'react-dom/test-utils': 'preact/test-utils',
-        //     'react-dom': 'preact/compat',
-        //     'react/jsx-runtime': 'preact/jsx-runtime'
-        // },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     module: {
@@ -27,8 +20,8 @@ module.exports = {
                 test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                    loader: 'swc-loader'
-                }
+                    loader: 'swc-loader',
+                },
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -45,6 +38,17 @@ module.exports = {
         static: path.join(__dirname, 'dist'),
         compress: true,
         port: 9500,
+        hot: true,
+        client: {
+            overlay: {
+                warnings: false,
+                errors: true,
+            },
+        },
+        devMiddleware: {
+            publicPath: '/',
+        },
+        historyApiFallback: true, // Ensure single page app routing works
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -52,10 +56,10 @@ module.exports = {
             scriptLoading: 'blocking',
         }),
         new MiniCssExtractPlugin({
-            filename: './index.css',
+            filename: 'index.css',
         }),
         new webpack.ProvidePlugin({
-            'React': 'react',
+            React: 'react',
         }),
     ],
-};
+});
