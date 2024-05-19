@@ -12,6 +12,8 @@
     }
   },
   "module": {
-    "type": "commonjs"
+    "type": "es6",
+    "strictMode": true,
+    "strict": true
   }
 }
