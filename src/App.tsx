@@ -1,3 +1,5 @@
+import { JSComponents } from './JSComponents';
+
 export const App = () => {
   return (
     <div className=" btn-blue ">
@@ -8,6 +10,7 @@ export const App = () => {
       >
         Hello, Preact!
       </div>
+      <JSComponents text={'Custom prop'} />
     </div>
   );
 };
