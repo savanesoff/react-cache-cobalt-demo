@@ -23,15 +23,20 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.(ts|tsx|js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'swc-loader'
                 }
             },
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             },
         ],
     },
@@ -46,7 +51,7 @@ module.exports = {
             scriptLoading: 'blocking',
         }),
         new MiniCssExtractPlugin({
-            filename: '*.css',
+            filename: './index.css',
         }),
     ],
 };

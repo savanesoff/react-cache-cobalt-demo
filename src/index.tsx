@@ -1,18 +1,10 @@
 import { render } from 'preact';
 import React from 'preact';
-import './index.css';
+import './tailwind.scss';
 
 const App = () => {
   return (
-    <div
-      className="bg-blue-800"
-      //   style={{
-      //     position: 'absolute',
-      //     width: '100vw',
-      //     height: '100vh',
-      //     // backgroundColor: '#461f1f',
-      //   }}
-    >
+    <div className=" btn-blue ">
       <div
         style={{
           color: 'white',
