@@ -9,7 +9,7 @@ const generateScssClasses = (theme) => {
     let scssContent = `@import 'tailwindcss/base';\n@import 'tailwindcss/components';\n@import 'tailwindcss/utilities';\n\n`;
 
     const sanitizeClassName = (className) => {
-        return className.replace(/\//g, '\\/');
+        return className.replace(/\//g, '\\/').replace(/\./g, '\\.');
     };
 
     const addClasses = (prefix, themeSection, cssProperty) => {
@@ -17,15 +17,15 @@ const generateScssClasses = (theme) => {
         for (const key in section) {
             if (Array.isArray(section[key])) {
                 const className = sanitizeClassName(`${prefix}-${key}`);
-                scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}[0]');\n}\n\n`;
+                scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}[${key}][0]');\n}\n\n`;
             } else if (typeof section[key] === 'object') {
                 for (const subKey in section[key]) {
                     const className = sanitizeClassName(`${prefix}-${key}-${subKey}`);
-                    scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}.${subKey}');\n}\n\n`;
+                    scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}[${key}][${subKey}]');\n}\n\n`;
                 }
             } else {
                 const className = sanitizeClassName(`${prefix}-${key}`);
-                scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}.${key}');\n}\n\n`;
+                scssContent += `.${className} {\n  ${cssProperty} : theme('${themeSection}[${key}]');\n}\n\n`;
             }
         }
     };
