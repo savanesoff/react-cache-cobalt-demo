@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -12,12 +13,12 @@ module.exports = {
     },
     target: 'web',
     resolve: {
-        alias: {
-            'react': 'preact/compat',
-            'react-dom/test-utils': 'preact/test-utils',
-            'react-dom': 'preact/compat',
-            'react/jsx-runtime': 'preact/jsx-runtime'
-        },
+        // alias: {
+        //     'react': 'preact/compat',
+        //     'react-dom/test-utils': 'preact/test-utils',
+        //     'react-dom': 'preact/compat',
+        //     'react/jsx-runtime': 'preact/jsx-runtime'
+        // },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
     module: {
@@ -52,6 +53,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: './index.css',
+        }),
+        new webpack.ProvidePlugin({
+            'React': 'react',
         }),
     ],
 };

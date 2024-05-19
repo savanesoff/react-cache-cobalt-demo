@@ -1,11 +1,13 @@
-import React from 'preact';
-
-const App = () => {
+export const App = () => {
   return (
-    <div>
-      <div>Hello, React with TypeScript, Webpack, and Tailwind CSS!</div>
+    <div className=" btn-blue ">
+      <div
+        style={{
+          color: 'white',
+        }}
+      >
+        Hello, Preact!
+      </div>
     </div>
   );
 };
-
-export default App;
