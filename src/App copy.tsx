@@ -1,4 +1,5 @@
-import { cn } from '@/utils';
+import devtoolsFPS from 'devtools-fps';
+import { cn } from './utils';
 import { ControllerProvider } from 'image-cache-react';
 
 import { View } from '@/components';
@@ -20,7 +21,19 @@ init({
   throttle: 160,
 });
 
-export function App() {
+devtoolsFPS.config({
+  bufferSize: 200,
+  width: 200,
+  height: 50,
+  style: {
+    // position: "fixed",
+    bottom: `0`,
+    right: `0`,
+    zIndex: `9999`,
+  },
+});
+
+function App() {
   const [lockReady, setLockReady] = useState(false);
   const onCacheLockReady = useCallback(() => {
     setLockReady(true);
@@ -78,3 +91,5 @@ export function App() {
     </FocusContext.Provider>
   );
 }
+
+export default App;

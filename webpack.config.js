@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = (env, argv) => ({
     mode: argv.mode || 'development',
@@ -13,6 +14,7 @@ module.exports = (env, argv) => ({
     devtool: argv.mode === 'development' ? 'source-map' : false, // Use 'source-map' for better debugging
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+        plugins: [new TsconfigPathsPlugin({})],
     },
     module: {
         rules: [
