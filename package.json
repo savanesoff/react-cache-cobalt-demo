@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --quiet --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
-    "test": "vitest"
+    "test": "vitest",
+    "tsc": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +18,8 @@
     "@noriginmedia/norigin-spatial-navigation": "^2.1.0",
     "clsx": "^2.1.1",
     "core-js": "^3.37.1",
-    "image-cache-react": "file:../image-cache-react",
     "lorem-ipsum": "^2.0.8",
-    "preact": "10.22.0",
+    "preact": "^10.22.0",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
