@@ -15,6 +15,11 @@ module.exports = (env, argv) => ({
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         plugins: [new TsconfigPathsPlugin({})],
+        alias: {
+            'react': 'preact/compat',
+            'react-dom': 'preact/compat',
+            // Add other aliases if needed
+        },
     },
     module: {
         rules: [
