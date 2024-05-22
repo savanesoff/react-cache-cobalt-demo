@@ -36,6 +36,9 @@ export default (env, argv) => ({
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'swc-loader',
+                    options: {
+                        sourceMaps: true, // Ensure SWC loader generates source maps
+                    }
                 },
             },
             {
