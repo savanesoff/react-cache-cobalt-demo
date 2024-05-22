@@ -12,10 +12,11 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@utils": ["src/utils"],
-      "@/*": ["src/*"]
+      "@components": ["src/components/"],
+      "@config": ["src/config/"]
     },
     "typeRoots": ["./node_modules/@types"]
   },

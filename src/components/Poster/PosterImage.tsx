@@ -1,6 +1,5 @@
 import { useImage, useBucket } from 'image-cache-react';
-import { cn } from '@/utils';
-import { Asset } from '@/utils';
+import { cn, Asset } from '@utils';
 import { useState, useCallback, useMemo, useEffect } from 'react';
 
 type PosterImageProps = {

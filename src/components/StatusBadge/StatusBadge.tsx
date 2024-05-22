@@ -1,4 +1,4 @@
-import { cn } from '@/utils';
+import { cn } from '@utils';
 import { HTMLAttributes } from 'react';
 
 export type StatusBadgeProps = HTMLAttributes<HTMLDivElement> & {

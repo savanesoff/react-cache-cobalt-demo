@@ -1,7 +1,7 @@
-import { cn } from '@/utils';
+import { cn } from '@utils';
 import { ControllerProvider } from 'image-cache-react';
 
-import { View } from '@/components';
+import { View } from '@components';
 import {
   FocusContext,
   init,

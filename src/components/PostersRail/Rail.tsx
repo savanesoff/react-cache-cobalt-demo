@@ -1,7 +1,6 @@
-import { cn } from '@/utils';
-import { Topic } from '@/utils/assets.endpoint';
+import { cn, Topic } from '@utils';
 import { HTMLAttributes, useMemo } from 'react';
-import { PosterPage } from '@/components';
+import { PosterPage } from '@components';
 
 export type RailProps = HTMLAttributes<HTMLDivElement> & {
   focused: boolean;

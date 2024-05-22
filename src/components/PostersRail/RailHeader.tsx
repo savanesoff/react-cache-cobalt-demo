@@ -1,13 +1,12 @@
-import { cn } from '@/utils';
+import { cn, Topic } from '@utils';
 import {
   PageLoadStatus,
   RamUsage,
   PageRenderStatus,
   VideoUsage,
-} from '@/components';
+} from '@components';
 import { HTMLAttributes } from 'react';
 import { AssetCount } from './AssetCount';
-import { Topic } from '@/utils';
 
 type RailHeaderProps = HTMLAttributes<HTMLDivElement> & {
   topic: Topic;

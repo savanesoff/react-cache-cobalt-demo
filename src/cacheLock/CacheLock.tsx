@@ -9,7 +9,7 @@ import {
 } from 'image-cache-react';
 import { useLockerAssets } from './useLockerAssets';
 import { onRenderRequest } from './onRenderRequest';
-import config from '@/config.json';
+import { config } from '@config';
 import { useMemo } from 'react';
 
 export const CacheLock = (props: UseBucketProps) => {

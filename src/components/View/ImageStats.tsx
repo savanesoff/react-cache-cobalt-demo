@@ -1,6 +1,6 @@
 import { ControllerEvent, useController } from 'image-cache-react';
 import { useCallback, useState } from 'react';
-import { StatusBadge } from '@/components';
+import { StatusBadge } from '@components';
 
 export const ImageStats = () => {
   const [imageCount, setImageCount] = useState(0);

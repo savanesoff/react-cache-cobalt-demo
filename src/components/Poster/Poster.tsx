@@ -1,6 +1,6 @@
 import { HTMLAttributes, useEffect } from 'react';
 import { useImage } from 'image-cache-react';
-import { cn } from '@/utils';
+import { cn } from '@utils';
 import { PosterLoadStatus } from './LoadStatus';
 import { PosterRenderStatus } from './RenderStatus';
 import { PosterImage } from './PosterImage';

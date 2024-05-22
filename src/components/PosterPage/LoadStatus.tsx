@@ -1,6 +1,6 @@
 import { BucketEvent, useBucket } from 'image-cache-react';
 import { useCallback, useState } from 'react';
-import { StatusBadge } from '../StatusBadge';
+import { StatusBadge } from '@components';
 
 export const PageLoadStatus = () => {
   const [progress, setProgress] = useState(0);

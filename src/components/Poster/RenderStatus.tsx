@@ -1,6 +1,6 @@
 import { useImage } from 'image-cache-react';
 import { useCallback, useState } from 'react';
-import { StatusBadge } from '../StatusBadge';
+import { StatusBadge } from '@components';
 
 export const PosterRenderStatus = () => {
   const [rendered, setRendered] = useState(false);

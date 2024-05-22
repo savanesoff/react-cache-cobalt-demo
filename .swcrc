@@ -4,16 +4,14 @@
       "syntax": "typescript",
       "tsx": true
     },
+    "target": "es2021",
     "transform": {
       "react": {
-        "runtime": "automatic",
-        "importSource": "preact"
+        "runtime": "automatic"
       }
     }
   },
   "module": {
-    "type": "es6",
-    "strictMode": true,
-    "strict": true
+    "type": "es6"
   }
 }

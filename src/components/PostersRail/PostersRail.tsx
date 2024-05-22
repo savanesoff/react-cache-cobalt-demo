@@ -1,6 +1,5 @@
 import { BucketProvider } from 'image-cache-react';
-import { cn } from '@/utils';
-import { Topic } from '@/utils/assets.endpoint';
+import { cn, Topic } from '@utils';
 import {
   FocusContext,
   useFocusable,

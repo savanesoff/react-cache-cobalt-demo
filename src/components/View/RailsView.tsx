@@ -1,7 +1,7 @@
-import { Topic, fetchTopics } from '@/utils/assets.endpoint';
+import { Topic, fetchTopics } from '@utils';
 import { useState, useEffect } from 'react';
 import { PostersRail } from '../PostersRail';
-import config from '@/config.json';
+import { config } from '@config';
 
 export const RailsView = () => {
   const [data, setData] = useState<Topic[]>([]);

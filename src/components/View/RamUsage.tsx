@@ -1,6 +1,6 @@
 import { MemoryEvent, MemoryStats, useController } from 'image-cache-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { StatusBadge } from '@/components';
+import { StatusBadge } from '@components';
 
 export const RamUsage = () => {
   const { controller } = useController();

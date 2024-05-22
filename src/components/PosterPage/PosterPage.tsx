@@ -7,9 +7,9 @@ import {
   useState,
 } from 'react';
 import { BucketProviderProps, ImageProvider } from 'image-cache-react';
-import { Asset, AssetPage, fetchAssets, Topic, cn } from '@/utils';
-import { Poster } from '@/components';
-import config from '@/config.json';
+import { Asset, AssetPage, fetchAssets, Topic, cn } from '@utils';
+import { Poster } from '@components';
+import { config } from '@config';
 import { useVisibilityObserver } from 'image-cache-react';
 
 export type PosterPageProps = HTMLAttributes<HTMLDivElement> &

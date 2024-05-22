@@ -1,6 +1,6 @@
 import { BucketRamUnits, useBucket } from 'image-cache-react';
 import { useCallback, useState } from 'react';
-import { StatusBadge } from '@/components';
+import { StatusBadge } from '@components';
 
 export const RamUsage = () => {
   const [data, setData] = useState<BucketRamUnits>();
