@@ -58,10 +58,7 @@ export default (env, argv) => ({
         port: 9500,
         hot: true,
         client: {
-            overlay: {
-                warnings: false,
-                errors: true,
-            },
+            overlay: false
         },
         devMiddleware: {
             publicPath: '/',
