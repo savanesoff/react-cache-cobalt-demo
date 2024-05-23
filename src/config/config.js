@@ -5,17 +5,17 @@ const images = {
   small: 'test-small.png'
 };
 export const config = {
-  'image': {
-    'baseUrl': `http://${host}:8080/${images.small}`,
-    'mimeType': 'image/png',
-    'colorType': 'RGBA',
-    'renderWidth': 100,
-    'renderHeight': 160
+  image: {
+    baseUrl: `http://${host}:8080/${images.small}`,
+    mimeType: 'image/png',
+    colorType: 'RGBA',
+    renderWidth: 100,
+    renderHeight: 160
   },
 
-  'topics': 2,
-  'perPage': 10,
-  'pages': 5,
-  'visibilityMargin': '200px'
+  topics: 6,
+  perPage: 10,
+  pages: 10,
+  visibilityMargin: '200px'
 };
 window.config = config;
