@@ -24,6 +24,9 @@ export default [
         },
       },
     },
+    environments: {
+      browser: true, // Add this line to include browser environment globals
+    },
     plugins: {
       react: react,
       '@typescript-eslint': tsPlugin,
