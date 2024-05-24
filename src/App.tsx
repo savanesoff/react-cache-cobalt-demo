@@ -32,12 +32,12 @@ export function App() {
   }, []);
 
   const { ref, focusKey } = useFocusable({
-    isFocusBoundary: true,
-    focusBoundaryDirections: ['up', 'down'],
-    trackChildren: true,
-    autoRestoreFocus: true,
-    focusable: true,
-    forceFocus: true,
+    // isFocusBoundary: true,
+    // focusBoundaryDirections: ['up', 'down'],
+    // trackChildren: true,
+    // autoRestoreFocus: true,
+    // focusable: true,
+    // forceFocus: true,
   });
   return (
     <FocusContext.Provider value={focusKey}>
@@ -74,7 +74,7 @@ export function App() {
           ram={50000}
           video={30000}
           units="MB"
-          hwRank={0.8} // 0-1
+          hwRank={0.5} // 0-1
           gpuDataFull={true}
         >
           <CacheStats />
