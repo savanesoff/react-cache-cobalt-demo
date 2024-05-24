@@ -2,7 +2,7 @@ import { cn } from '@utils';
 import { Topic } from '@utils';
 import { PosterPage } from '@components';
 import { config } from '@config';
-import { HTMLAttributes, useMemo } from 'react';
+import { HTMLAttributes, useCallback, useMemo, useRef } from 'react';
 
 export type RailProps = HTMLAttributes<HTMLDivElement> & {
   focused: boolean;
@@ -25,26 +25,71 @@ export const Rail = ({
     [topic.pages],
   );
 
+  const ref = useRef<HTMLDivElement>(null);
+  const onPosterFocus = useCallback((element: HTMLElement) => {
+    const parent = ref.current;
+    const offsetParent = element.offsetParent as HTMLElement;
+    if (!parent || !offsetParent) {
+      console.error('Parent or offsetParent is null');
+      return;
+    }
+    if (parent !== offsetParent) {
+      console.error('Element is not a child of the parent');
+      return;
+    }
+
+    // console.log('offsetParent w:', offsetParent.offsetWidth);
+    // element.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'center',
+    //   inline: 'center',
+    // });
+    const box = { left: 100, right: 100 };
+
+    const scroll = element.offsetLeft - offsetParent.offsetWidth / 2 + box.left;
+    console.log('scrollTo:', scroll);
+
+    offsetParent.style.transform = `translateX(-${scroll}px)`;
+  }, []);
+
   return (
     <div
-      data-testid="rail"
+      data-testid="rail-view"
       className={cn(
-        `h-[${config.image.renderHeight}]`,
-        'flex flex-row space-x-2 overflow-y-hidden overflow-x-scroll bg-slate-900 no-scrollbar',
+        'relative',
+        ' min-w-fit bg-slate-900  overflow-hidden',
+        // 'border-2 border-red-400',
         focused && 'bg-fuchsia-950',
         className,
       )}
+      style={{
+        height: config.image.renderHeight,
+      }}
       {...props}
     >
-      {pages.map((_, index) => (
-        <PosterPage
-          key={index}
-          name="Poser page main"
-          topic={topic}
-          pageNumber={index + fromPage}
-          immediateFetch={immediateFetchPages.includes(index)}
-        />
-      ))}
+      <div
+        ref={ref}
+        data-testid={`rail-scroll-pages`}
+        className={cn(
+          'absolute top-0 ',
+          'flex flex-row  min-w-fit',
+          'transition-all duration-300 ease-in-out',
+        )}
+        style={{
+          height: config.image.renderHeight,
+        }}
+      >
+        {pages.map((_, index) => (
+          <PosterPage
+            key={index}
+            name="Poser page main"
+            topic={topic}
+            pageNumber={index + fromPage}
+            immediateFetch={immediateFetchPages.includes(index)}
+            onPosterFocus={onPosterFocus}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ export type PosterPageProps = HTMLAttributes<HTMLDivElement> &
     pageNumber: number;
     /** Array of page numbers to fetch initially */
     immediateFetch?: boolean;
+    onPosterFocus?: (element: HTMLElement) => void;
   };
 
 /**
@@ -29,6 +30,7 @@ export const PosterPage = ({
   pageNumber,
   className,
   immediateFetch,
+  onPosterFocus,
   ...props
 }: PosterPageProps) => {
   const [pageData, setPageData] = useState<AssetPage>();
@@ -41,6 +43,7 @@ export const PosterPage = ({
    * Fetches the assets for the page
    */
   const fetchData = useCallback(async () => {
+    console.log('fetching page data', topic, pageNumber);
     setFetchStatus('loading');
     const data = await fetchAssets({
       topic,
@@ -87,6 +90,7 @@ export const PosterPage = ({
           index={index}
           pageNumber={pageNumber}
           showImmediately={!immediateFetch}
+          onFocus={onPosterFocus}
         />
       ))}
     </div>
@@ -103,11 +107,13 @@ const ImageContent = ({
   index,
   pageNumber,
   showImmediately,
+  onFocus,
 }: {
   asset: Asset;
   index: number;
   pageNumber: number;
   showImmediately?: boolean;
+  onFocus?: (element: HTMLElement) => void;
 }) => {
   const headers = useMemo(
     () => ({
@@ -132,6 +138,7 @@ const ImageContent = ({
         asset={asset}
         pageNumber={pageNumber}
         showImmediately={showImmediately}
+        onFocus={onFocus}
       />
     </ImageProvider>
   );

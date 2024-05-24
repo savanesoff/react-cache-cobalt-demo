@@ -6,11 +6,12 @@ import { PosterImage } from './PosterImage';
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation';
 import { Asset } from '@utils';
 
-export type PosterProps = HTMLAttributes<HTMLDivElement> & {
+export type PosterProps = Omit<HTMLAttributes<HTMLDivElement>, 'onFocus'> & {
   index: number;
   asset: Asset;
   pageNumber: number;
   showImmediately?: boolean;
+  onFocus?: (element: HTMLElement) => void;
 };
 
 /**
@@ -22,17 +23,14 @@ export const Poster = ({
   asset,
   pageNumber,
   showImmediately,
+  onFocus,
 }: PosterProps) => {
   const { ref, focused } = useFocusable();
   const { width, height } = useImage({ ref });
 
   useEffect(() => {
     if (focused) {
-      ref.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'center',
-      });
+      onFocus?.(ref.current);
     }
   }, [focused, ref]);
 
