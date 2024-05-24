@@ -17,8 +17,8 @@ export const ImageStats = () => {
 
   return (
     <>
-      <StatusBadge text={`I: ${imageCount}`} />;
-      <StatusBadge text={`R: ${requestCount}`} />;
+      <StatusBadge text={`I: ${imageCount}`} />
+      <StatusBadge text={`R: ${requestCount}`} />
     </>
   );
 };

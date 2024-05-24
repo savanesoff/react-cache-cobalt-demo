@@ -30,6 +30,7 @@ export const PostersRail = ({
   return (
     <FocusContext.Provider value={focusKey}>
       <div className={cn('flex flex-col', className)} {...props} ref={ref}>
+        {/*  @ts-expect-error FocusContext is not exported */}
         <BucketProvider name={topic.title}>
           <RailHeader topic={topic} focused={hasFocusedChild} />
           <Rail topic={topic} fromPage={fromPage} focused={hasFocusedChild} />

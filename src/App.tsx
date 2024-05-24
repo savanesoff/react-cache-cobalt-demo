@@ -31,7 +31,14 @@ export function App() {
     setShowView((prev) => !prev);
   }, []);
 
-  const { ref, focusKey } = useFocusable();
+  const { ref, focusKey } = useFocusable({
+    isFocusBoundary: true,
+    focusBoundaryDirections: ['up', 'down'],
+    trackChildren: true,
+    autoRestoreFocus: true,
+    focusable: true,
+    forceFocus: true,
+  });
   return (
     <FocusContext.Provider value={focusKey}>
       <div
@@ -61,6 +68,7 @@ export function App() {
             className="text-sm"
           />
         </div>
+        {/* @ts-expect-error react incompatibility */}
         <ControllerProvider
           loaders={6}
           ram={50000}
