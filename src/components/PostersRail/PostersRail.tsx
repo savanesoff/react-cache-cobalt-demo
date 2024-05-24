@@ -1,9 +1,5 @@
 import { BucketProvider } from 'image-cache-react';
 import { cn, Topic } from '@utils';
-import {
-  FocusContext,
-  useFocusable,
-} from '@noriginmedia/norigin-spatial-navigation';
 import { HTMLAttributes } from 'react';
 import { RailHeader } from './RailHeader';
 import { Rail } from './Rail';
@@ -11,6 +7,7 @@ import { Rail } from './Rail';
 type PosterRailProps = HTMLAttributes<HTMLDivElement> & {
   topic: Topic;
   fromPage?: number;
+  focused?: boolean;
 };
 /**
  * An example of poster rail that fetches data and renders cached posters
@@ -19,23 +16,16 @@ export const PostersRail = ({
   topic,
   fromPage = 0,
   className,
+  focused = false,
   ...props
 }: PosterRailProps) => {
-  const { ref, focusKey, hasFocusedChild } = useFocusable({
-    isFocusBoundary: true,
-    focusBoundaryDirections: ['left', 'right'],
-    trackChildren: true,
-  });
-
   return (
-    <FocusContext.Provider value={focusKey}>
-      <div className={cn('flex flex-col', className)} {...props} ref={ref}>
-        {/*  @ts-expect-error FocusContext is not exported */}
-        <BucketProvider name={topic.title}>
-          <RailHeader topic={topic} focused={hasFocusedChild} />
-          <Rail topic={topic} fromPage={fromPage} focused={hasFocusedChild} />
-        </BucketProvider>
-      </div>
-    </FocusContext.Provider>
+    <div className={cn('flex flex-col', className)} {...props}>
+      {/*  @ts-expect-error FocusContext is not exported */}
+      <BucketProvider name={topic.title}>
+        <RailHeader topic={topic} focused={focused} />
+        <Rail topic={topic} fromPage={fromPage} focused={focused} />
+      </BucketProvider>
+    </div>
   );
 };
