@@ -7,7 +7,7 @@ import { RailsView } from './RailsView';
  */
 export const View = () => {
   return (
-    <div className={cn('p-4', 'bg-slate-600', 'w-full space-y-2')}>
+    <div className={cn('bg-slate-600 w-full space-y-2')}>
       <RailsView />
     </div>
   );
