@@ -1,25 +1,32 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "lib": ["DOM", "DOM.Iterable", "ESNext"],
-        "target": "es5",
-        "module": "es6",
-        "jsx": "react-jsx",
-        "strict": true,
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "allowSyntheticDefaultImports": true,
-        "resolveJsonModule": true,
-        "baseUrl": "./",
-        "paths": {
-            "@utils": ["src/utils"],
-            "@components": ["src/components/"],
-            "@config": ["src/config/"]
-        },
-        "typeRoots": ["./node_modules/@types"]
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "es5",
+    "module": "es6",
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    // "jsxImportSource": "preact",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "types": ["vite/client", "vitest/globals", "vitest/jsdom"],
+    "baseUrl": "./",
+    "paths": {
+      "@utils": ["src/utils"],
+      "@components": ["src/components/"],
+      "@config": ["src/config/"]
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
