@@ -33,42 +33,40 @@ export function getHorizontalScrollPosition(
     respectBoundaries = true,
   } = options;
 
-  // Get the dimensions and positions using offset properties
-  const stageWidth = stage.offsetWidth;
-  const targetWidth = target.offsetWidth;
-  const scrollableWidth = scrollable.scrollWidth;
-  const targetOffsetLeft = target.offsetLeft;
-
+  // const offsetLeft = -scrollable.getBoundingClientRect().left;
   // Calculate the target's left position relative to the scrollable element's current scroll position
-  const targetLeftRelativeToScrollable =
-    targetOffsetLeft + scrollable.scrollLeft;
+  const targetLeftRelativeToScrollable = target.offsetLeft;
   // Calculate the target's center position relative to the scrollable element
   const targetCenterRelativeToScrollable =
-    targetLeftRelativeToScrollable + targetWidth / 2;
+    targetLeftRelativeToScrollable + target.offsetWidth / 2;
 
   let scrollX;
 
   if (center) {
     // Calculate the scroll position to center the target within the stage
-    scrollX = targetCenterRelativeToScrollable - stageWidth / 2;
+    scrollX = targetCenterRelativeToScrollable - stage.offsetWidth / 2;
   } else {
+    // TODO this needs to be fixed
     const targetLeftWithinStage = targetLeftRelativeToScrollable - paddingLeft;
     const targetRightWithinStage =
-      targetLeftRelativeToScrollable + targetWidth + paddingRight - stageWidth;
+      targetLeftRelativeToScrollable +
+      target.offsetWidth +
+      paddingRight -
+      stage.offsetWidth;
 
     if (targetLeftWithinStage < 0) {
       scrollX = targetLeftWithinStage;
     } else if (targetRightWithinStage > 0) {
       scrollX = targetRightWithinStage;
     } else {
-      scrollX = scrollable.scrollLeft;
+      scrollX = -scrollable.getBoundingClientRect().left;
     }
   }
 
   if (respectBoundaries) {
     // Ensure the scroll position does not exceed the allowable limits of the scrollable area
     scrollX = Math.max(scrollX, 0);
-    scrollX = Math.min(scrollX, scrollableWidth - stageWidth);
+    scrollX = Math.min(scrollX, scrollable.scrollWidth - stage.offsetWidth);
   }
 
   return scrollX;
