@@ -77,7 +77,7 @@ export const PosterPage = ({
     <div
       ref={ref}
       className={cn(
-        'flex min-w-full flex-shrink-0 flex-grow flex-row overflow-y-clip',
+        'flex flex-shrink-0 flex-grow flex-row overflow-y-clip',
         className,
       )}
       {...props}
