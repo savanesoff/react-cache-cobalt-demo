@@ -17,7 +17,7 @@ init({
   shouldFocusDOMNode: true,
   shouldUseNativeEvents: true,
   // useGetBoundingClientRect: true,
-  throttle: 160,
+  throttle: 180,
 });
 
 export function App() {
@@ -74,7 +74,7 @@ export function App() {
           ram={50000}
           video={30000}
           units="MB"
-          hwRank={0.5} // 0-1
+          hwRank={0.4} // 0-1
           gpuDataFull={true}
         >
           <CacheStats />
