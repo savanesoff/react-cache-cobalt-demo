@@ -1,9 +1,7 @@
-import { cn } from '@utils';
-import { Topic } from '@utils';
+import { cn, Topic, getHorizontalScrollPosition } from '@utils';
 import { PosterPage } from '@components';
 import { config } from '@config';
 import { HTMLAttributes, useCallback, useMemo, useRef } from 'react';
-
 export type RailProps = HTMLAttributes<HTMLDivElement> & {
   focused: boolean;
   topic: Topic;
@@ -25,39 +23,40 @@ export const Rail = ({
     [topic.pages],
   );
 
-  const ref = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
   const onPosterFocus = useCallback((element: HTMLElement) => {
-    const parent = ref.current;
-    const offsetParent = element.offsetParent as HTMLElement;
-    if (!parent || !offsetParent) {
+    const stageElement = stageRef.current;
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement || !element.offsetParent || !stageElement) {
       console.error('Parent or offsetParent is null');
       return;
     }
-    if (parent !== offsetParent) {
-      console.error('Element is not a child of the parent');
+    if (scrollElement !== element.offsetParent) {
+      console.error('Element is not a child of the scroll element');
       return;
     }
 
-    // console.log('offsetParent w:', offsetParent.offsetWidth);
-    // element.scrollIntoView({
-    //   behavior: 'smooth',
-    //   block: 'center',
-    //   inline: 'center',
-    // });
-    const box = { left: 100, right: 100 };
-
-    const scroll = element.offsetLeft - offsetParent.offsetWidth / 2 + box.left;
-    console.log('scrollTo:', scroll);
-
-    offsetParent.style.transform = `translateX(-${scroll}px)`;
+    const scrollX = getHorizontalScrollPosition({
+      target: element,
+      stage: stageElement,
+      scrollable: scrollElement,
+      paddingLeft: 200,
+      paddingRight: 200,
+      center: true,
+    });
+    scrollElement.style.transform = `translateX(-${scrollX}px)`;
   }, []);
 
   return (
     <div
+      ref={stageRef}
       data-testid="rail-view"
       className={cn(
         'relative',
-        ' min-w-fit bg-slate-900  overflow-hidden',
+        'min-w-fit bg-slate-900 overflow-hidden',
         // 'border-2 border-red-400',
         focused && 'bg-fuchsia-950',
         className,
@@ -68,7 +67,7 @@ export const Rail = ({
       {...props}
     >
       <div
-        ref={ref}
+        ref={scrollRef}
         data-testid={`rail-scroll-pages`}
         className={cn(
           'absolute top-0 ',
