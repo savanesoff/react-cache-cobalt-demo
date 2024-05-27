@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack serve --mode development --hot",
     "build": "webpack --mode production",
-    "lint": "eslint . ",
+    "lint": "eslint .",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,html}'",
     "test": "vitest",
     "tsc": "tsc"
