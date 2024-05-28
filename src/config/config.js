@@ -1,21 +1,22 @@
 // detect if 
 const host = location.hostname || 'localhost';
 const images = {
-  big: 'test-4k.jpeg',
-  small: 'test-small.png'
+  big: 'test-4k.jpg',
+  small: 'test-small.png',
+  tiny: 'movie-poster-155x210.jpg'
 };
 export const config = {
   image: {
-    baseUrl: `http://${host}:8080/${images.small}`,
+    baseUrl: `http://${host}:8080/${images.tiny}`,
     mimeType: 'image/png',
     colorType: 'RGBA',
-    renderWidth: 100,
-    renderHeight: 160
+    renderWidth: 155,
+    renderHeight: 210
   },
 
-  topics: 6,
+  topics: 2,
   perPage: 10,
-  pages: 10,
-  visibilityMargin: '200px'
+  pages: 5,
+  visibilityMargin: '500px'
 };
 window.config = config;

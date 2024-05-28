@@ -26,7 +26,7 @@ export const Poster = ({
   onFocus,
 }: PosterProps) => {
   const { ref, focused } = useFocusable();
-  const { width, height } = useImage({ ref });
+  const { width, height, visibilityRef } = useImage();
 
   useEffect(() => {
     if (focused) {
@@ -36,7 +36,10 @@ export const Poster = ({
 
   return (
     <div
-      ref={ref}
+      ref={(node) => {
+        ref.current = node;
+        visibilityRef(node);
+      }}
       className={'mr-2'}
       style={{
         width: width,
