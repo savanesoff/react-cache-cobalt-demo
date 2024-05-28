@@ -3,11 +3,14 @@ import { cn, Topic } from '@utils';
 import { HTMLAttributes } from 'react';
 import { RailHeader } from './RailHeader';
 import { Rail } from './Rail';
+import {
+  FocusContext,
+  useFocusable,
+} from '@noriginmedia/norigin-spatial-navigation';
 
 type PosterRailProps = HTMLAttributes<HTMLDivElement> & {
   topic: Topic;
   fromPage?: number;
-  focused?: boolean;
 };
 /**
  * An example of poster rail that fetches data and renders cached posters
@@ -16,15 +19,21 @@ export const PostersRail = ({
   topic,
   fromPage = 0,
   className,
-  focused = false,
   ...props
 }: PosterRailProps) => {
+  const { ref, focusKey, hasFocusedChild } = useFocusable({
+    isFocusBoundary: true,
+    focusBoundaryDirections: ['left', 'right'],
+    trackChildren: true,
+  });
   return (
-    <BucketProvider name={topic.title}>
-      <div className={cn('flex flex-col', className)} {...props}>
-        <RailHeader topic={topic} focused={focused} />
-        <Rail topic={topic} fromPage={fromPage} focused={focused} />
-      </div>
-    </BucketProvider>
+    <FocusContext.Provider value={focusKey}>
+      <BucketProvider name={topic.title}>
+        <div ref={ref} className={cn('flex flex-col', className)} {...props}>
+          <RailHeader topic={topic} focused={hasFocusedChild} />
+          <Rail topic={topic} fromPage={fromPage} focused={hasFocusedChild} />
+        </div>
+      </BucketProvider>
+    </FocusContext.Provider>
   );
 };
