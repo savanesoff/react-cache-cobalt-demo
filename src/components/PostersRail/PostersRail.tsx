@@ -20,12 +20,11 @@ export const PostersRail = ({
   ...props
 }: PosterRailProps) => {
   return (
-    <div className={cn('flex flex-col', className)} {...props}>
-      {/*  @ts-expect-error FocusContext is not exported */}
-      <BucketProvider name={topic.title}>
+    <BucketProvider name={topic.title}>
+      <div className={cn('flex flex-col', className)} {...props}>
         <RailHeader topic={topic} focused={focused} />
         <Rail topic={topic} fromPage={fromPage} focused={focused} />
-      </BucketProvider>
-    </div>
+      </div>
+    </BucketProvider>
   );
 };

@@ -60,6 +60,7 @@ export const PosterPage = ({
   }, [fetchData, fetchStatus]);
 
   const { ref } = useVisibilityObserver({
+    root: document.getElementById('root'),
     rootMargin: config.visibilityMargin,
     onVisible,
   });
@@ -120,7 +121,6 @@ const ImageContent = ({
   );
 
   return (
-    // @ts-expect-error react incompatibility
     <ImageProvider
       key={index}
       url={asset.url}

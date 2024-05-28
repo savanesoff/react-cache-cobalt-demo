@@ -16,7 +16,7 @@ export const RailsView = () => {
 
   return (
     <>
-      {data.length === 0 && <div>Loading...</div>}
+      {/* {data.length === 0 && <div>Loading...</div>} */}
       {data.map((topic) => (
         <PostersRail key={topic.id} topic={topic} fromPage={0} />
       ))}

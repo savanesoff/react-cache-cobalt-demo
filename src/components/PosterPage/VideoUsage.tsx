@@ -2,7 +2,7 @@ import { BucketVideoUnits, useBucket } from 'image-cache-react';
 import { useCallback, useState } from 'react';
 import { StatusBadge } from '@components';
 
-export const VideoUsage = () => {
+export const PageVideoUsage = () => {
   const [data, setData] = useState<BucketVideoUnits>();
 
   const { bucket } = useBucket();

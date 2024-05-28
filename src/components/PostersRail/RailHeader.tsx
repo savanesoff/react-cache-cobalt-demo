@@ -1,9 +1,9 @@
 import { cn, Topic } from '@utils';
 import {
   PageLoadStatus,
-  RamUsage,
+  PageRamUsage,
   PageRenderStatus,
-  VideoUsage,
+  PageVideoUsage,
 } from '@components';
 import { HTMLAttributes } from 'react';
 import { AssetCount } from './AssetCount';
@@ -32,8 +32,8 @@ export const RailHeader = ({
       <AssetCount />
       <PageLoadStatus />
       <PageRenderStatus />
-      <RamUsage />
-      <VideoUsage />
+      <PageRamUsage />
+      <PageVideoUsage />
     </div>
   );
 };
