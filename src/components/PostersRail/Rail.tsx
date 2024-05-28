@@ -56,8 +56,8 @@ export const Rail = ({
       data-testid="rail-view"
       className={cn(
         'relative',
-        'min-w-fit bg-slate-900 overflow-hidden',
-        // 'border-2 border-red-400',
+        'w-fit min-w-full bg-slate-900 overflow-hidden',
+        // 'bg-green-400',
         focused && 'bg-fuchsia-950',
         className,
       )}
@@ -71,8 +71,9 @@ export const Rail = ({
         data-testid={`rail-scroll-pages`}
         className={cn(
           'absolute top-0 ',
-          'flex flex-row  min-w-fit',
+          'flex flex-row  min-w-[1280px]',
           'transition-all duration-300 ease-in-out',
+          // 'bg-red-300',
         )}
         style={{
           height: config.image.renderHeight,

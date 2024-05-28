@@ -21,7 +21,7 @@ export const RailHeader = ({
   return (
     <div
       className={cn(
-        'flex w-full flex-row items-center space-x-2',
+        'flex min-w-full flex-row items-center space-x-2',
         ' bg-slate-800 p-2 text-sm text-slate-400',
         focused && 'bg-fuchsia-950',
         className,
