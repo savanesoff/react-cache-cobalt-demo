@@ -16,7 +16,7 @@ init({
   // options
   shouldFocusDOMNode: true,
   shouldUseNativeEvents: true,
-  // useGetBoundingClientRect: true,
+  useGetBoundingClientRect: true,
   throttle: 180,
 });
 
@@ -68,7 +68,6 @@ export function App() {
             className="text-sm"
           />
         </div>
-        {/* @ts-expect-error react incompatibility */}
         <ControllerProvider
           loaders={6}
           ram={50000}
