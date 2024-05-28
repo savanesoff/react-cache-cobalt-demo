@@ -10,7 +10,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    // "jsxImportSource": "preact",
+    "jsxImportSource": "preact",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -18,12 +18,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-    "types": ["vite/client", "vitest/globals", "vitest/jsdom"],
+    // "types": ["vitest/jsdom"],
     "baseUrl": "./",
     "paths": {
       "@utils": ["src/utils"],
       "@components": ["src/components/"],
-      "@config": ["src/config/"]
+      "@config": ["src/config/"],
+      "react": ["./node_modules/preact/compat/"],
+      "react/jsx-runtime": ["./node_modules/preact/jsx-runtime"],
+      "react-dom": ["./node_modules/preact/compat/"],
+      "react-dom/*": ["./node_modules/preact/compat/*"]
     },
     "typeRoots": ["./node_modules/@types"]
   },
