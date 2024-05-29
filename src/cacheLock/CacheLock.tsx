@@ -4,11 +4,9 @@ import {
   ImageProvider,
   useBucket,
   UseBucketProps,
-  useImage,
   UseImageProps,
 } from 'image-cache-react';
 import { useLockerAssets } from './useLockerAssets';
-import { onRenderRequest } from './onRenderRequest';
 import { config } from '@config';
 import { useMemo } from 'react';
 
