@@ -1,4 +1,4 @@
-// detect if 
+
 const host = location.hostname || 'localhost';
 const images = {
   big: 'test-4k.jpg',
@@ -7,7 +7,7 @@ const images = {
 };
 export const config = {
   image: {
-    baseUrl: `http://${host}:8080/${images.tiny}`,
+    baseUrl: `http://${host}:8080/${images.small}`,
     mimeType: 'image/png',
     colorType: 'RGBA',
     renderWidth: 155,
@@ -16,7 +16,6 @@ export const config = {
 
   topics: 2,
   perPage: 10,
-  pages: 5,
+  pages: 10,
   visibilityMargin: '500px'
-};
-window.config = config;
+}; 
