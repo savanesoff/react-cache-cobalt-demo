@@ -1,6 +1,6 @@
 import { useImage, useBucket } from 'image-cache-react';
 import { cn, Asset } from '@utils';
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 type PosterImageProps = {
   focused?: boolean;
