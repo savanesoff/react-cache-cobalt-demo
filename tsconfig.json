@@ -24,13 +24,13 @@
       "@utils": ["src/utils"],
       "@components": ["src/components/"],
       "@config": ["src/config/"],
-      "react": ["./node_modules/preact/compat/"],
-      "react/jsx-runtime": ["./node_modules/preact/jsx-runtime"],
-      "react-dom": ["./node_modules/preact/compat/"],
-      "react-dom/*": ["./node_modules/preact/compat/*"]
+      "react": ["node_modules/preact/compat/"],
+      "react/jsx-runtime": ["node_modules/preact/jsx-runtime"],
+      "react-dom": ["node_modules/preact/compat/"],
+      "react-dom/*": ["node_modules/preact/compat/*"]
     },
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
