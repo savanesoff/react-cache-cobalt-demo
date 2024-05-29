@@ -44,9 +44,14 @@ export const onRenderRequest = ({
   Object.assign(div.style, style);
   document.body.appendChild(div);
 
-  setTimeout(() => {
-    // while gpu mode on embedded platforms, the removal of the div will mean the image is no longer in the gpu
-    // document.body.removeChild(div);
-  }, renderTime);
+  // setTimeout(() => {
+  //   // while gpu mode on embedded platforms, the removal of the div will mean the image is no longer in the gpu
+  //   // document.body.removeChild(div);
+  // }, renderTime);
+  console.log('renderTime', renderTime, target.image.url);
+  target.on('clear', () => {
+    console.log('removeChild');
+    document.body.removeChild(div);
+  });
   return true;
 };

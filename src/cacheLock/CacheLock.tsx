@@ -43,7 +43,7 @@ const AssetLocker = ({ assetPages, ...props }: AssetLockerProps) => {
 type LockerImageProps = UseImageProps & {
   asset: Asset;
 };
-const LockerImage = ({ asset, ...props }: LockerImageProps) => {
+const LockerImage = ({ asset }: LockerImageProps) => {
   const headers = useMemo(() => {
     return {
       'Content-Type': asset.mimeType,
@@ -57,13 +57,6 @@ const LockerImage = ({ asset, ...props }: LockerImageProps) => {
       headers={headers}
       width={config.image.renderWidth}
       height={config.image.renderHeight}
-    >
-      <LockerImageEvents {...props} />
-    </ImageProvider>
+    />
   );
-};
-
-const LockerImageEvents = (props: UseImageProps) => {
-  useImage({ onRender: onRenderRequest, ...props });
-  return null;
 };

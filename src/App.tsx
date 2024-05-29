@@ -11,6 +11,7 @@ import { CacheLock } from './cacheLock';
 import { useCallback, useState } from 'react';
 import { CacheStats } from './components/View/CacheStats';
 import { Button } from './components/Button';
+import { onRenderRequest } from './cacheLock/onRenderRequest';
 
 init({
   // options
@@ -69,17 +70,21 @@ export function App() {
           />
         </div>
         <ControllerProvider
-          loaders={6}
-          ram={50000}
-          video={30000}
+          loaders={1}
+          ram={30000}
+          video={14000}
           units="MB"
-          hwRank={0.4} // 0-1
+          hwRank={0.2} // 0-1
           gpuDataFull={true}
+          renderer={onRenderRequest}
+          logLevel="info"
         >
-          <CacheStats />
+          <>
+            <CacheStats />
 
-          {showView && <View />}
-          <CacheLock onRendered={onCacheLockReady} />
+            {showView && <View />}
+            <CacheLock onRendered={onCacheLockReady} />
+          </>
         </ControllerProvider>
       </div>
     </FocusContext.Provider>
