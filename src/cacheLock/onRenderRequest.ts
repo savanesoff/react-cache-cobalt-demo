@@ -4,10 +4,7 @@ import { RenderRequestEvent } from 'image-cache-react';
  * A custom event handler for the render request.
  * Depending on the platform and the browser, its implementation will vary
  */
-export const onRenderRequest = ({
-  target,
-  renderTime,
-}: RenderRequestEvent<'render'>) => {
+export const onRenderRequest = ({ target }: RenderRequestEvent<'render'>) => {
   // return true;
   if (!target.bucket.controller.gpuDataFull) {
     return false;
@@ -23,7 +20,7 @@ export const onRenderRequest = ({
     // during gpuModeFull, the size of the image doesn't matter, so to preserve the performance we'll render it as 1x1
     width: `${size.width}px`,
     height: `${size.height}px`,
-    opacity: '0.001',
+    opacity: '0.01',
     position: 'absolute',
     top: '0',
     left: Math.round(Math.random() * (window.innerWidth - 1)) + 'px',
@@ -43,14 +40,7 @@ export const onRenderRequest = ({
 
   Object.assign(div.style, style);
   document.body.appendChild(div);
-
-  // setTimeout(() => {
-  //   // while gpu mode on embedded platforms, the removal of the div will mean the image is no longer in the gpu
-  //   // document.body.removeChild(div);
-  // }, renderTime);
-  console.log('renderTime', renderTime, target.image.url);
   target.on('clear', () => {
-    console.log('removeChild');
     document.body.removeChild(div);
   });
   return true;
