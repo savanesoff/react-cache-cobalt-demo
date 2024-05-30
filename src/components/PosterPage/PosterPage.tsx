@@ -5,11 +5,14 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { BucketProviderProps, ImageProvider } from 'image-cache-react';
+import {
+  BucketProviderProps,
+  ImageProvider,
+  useVisibilityObserver,
+} from 'image-cache-react';
 import { Asset, AssetPage, fetchAssets, Topic, cn } from '@utils';
 import { Poster } from '@components';
 import { config } from '@config';
-import { useVisibilityObserver } from 'image-cache-react';
 
 export type PosterPageProps = HTMLAttributes<HTMLDivElement> &
   Exclude<BucketProviderProps, 'children'> & {
@@ -54,15 +57,15 @@ export const PosterPage = ({
     }
   }, [topic, pageNumber]);
 
-  const onVisible = useCallback(() => {
-    if (fetchStatus === 'idle') fetchData();
-  }, [fetchData, fetchStatus]);
-
-  const { ref } = useVisibilityObserver({
-    root: document.getElementById('root'),
+  const { visible, ref } = useVisibilityObserver({
     rootMargin: config.visibilityMargin,
-    onVisible,
   });
+
+  useEffect(() => {
+    if (visible && fetchStatus === 'idle') {
+      fetchData();
+    }
+  }, [fetchStatus, fetchData, visible]);
 
   useEffect(() => {
     if (immediateFetch) {
@@ -81,7 +84,7 @@ export const PosterPage = ({
     >
       {!pageData && <div>{fetchStatus}</div>}
       {pageData?.assets.map((asset, index) => (
-        <ImageContent
+        <ImageComponent
           key={asset.title}
           asset={asset}
           index={index}
@@ -99,7 +102,7 @@ export const PosterPage = ({
  * @param param0
  * @returns
  */
-const ImageContent = ({
+const ImageComponent = ({
   asset,
   index,
   pageNumber,
