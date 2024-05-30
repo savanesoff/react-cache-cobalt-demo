@@ -12,13 +12,7 @@ type PosterImageProps = {
 /**
  * Renders the poster image using the useImage hook.
  */
-export const PosterImage = ({
-  focused = false,
-  asset,
-  index,
-  pageNumber,
-  showImmediately,
-}: PosterImageProps) => {
+export const PosterImage = ({ showImmediately }: PosterImageProps) => {
   const { url, width, height } = useImage();
   const [show, setShow] = useState(showImmediately);
 
@@ -27,12 +21,6 @@ export const PosterImage = ({
   }, []);
 
   useBucket({ onRendered: onBucketReady });
-
-  const hash = useMemo(() => {
-    // get url ?hash url param value
-    const hash = url?.split('?hash=')[1];
-    return hash;
-  }, [url]);
 
   return (
     <div
@@ -50,58 +38,15 @@ export const PosterImage = ({
     >
       <div
         className={cn(
-          'opacity-0 transition-opacity duration-1000 ease-in-out',
+          'transition-all duration-[3000ms] ease-in-out',
           'h-full w-full',
-          show && 'opacity-100',
         )}
         style={{
-          backgroundImage: `url(${url})`,
-          backgroundSize: `${width}px ${height}px`,
+          backgroundImage: url ? `url(${url})` : 'none',
+          backgroundSize: url ? `${width}px ${height}px` : '0',
+          // opacity: show && url ? 1 : 0,
         }}
       />
-
-      <AssetInfo
-        focused={focused}
-        index={index}
-        pageNumber={pageNumber}
-        hash={hash}
-        asset={asset}
-      />
-    </div>
-  );
-};
-
-const AssetInfo = ({
-  focused,
-  index,
-  pageNumber,
-  hash,
-  asset,
-}: {
-  focused?: boolean;
-  index?: number;
-  pageNumber?: number;
-  hash?: string;
-  asset: Asset;
-}) => {
-  return (
-    <div
-      className={cn(
-        'absolute bottom-0 w-full max-w-full overflow-hidden bg-slate-900',
-        'duration-0 transition-all ease-in-out',
-        'flex flex-col items-start justify-start text-xl text-slate-50',
-        'h-1/2  opacity-0',
-        focused && 'opacity-80',
-      )}
-    >
-      <div className="p-1">
-        <div className="text-sm">
-          i:{index} p:{pageNumber}
-        </div>
-        <div className="text-xs">Hash {hash}</div>
-        <div className="text-xs">Title {asset.title}</div>
-        {/* <div className="text-xs">{asset.description}</div> */}
-      </div>
     </div>
   );
 };

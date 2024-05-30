@@ -1,10 +1,9 @@
-import { HTMLAttributes, useEffect } from 'react';
+import { HTMLAttributes, useEffect, useMemo } from 'react';
 import { useImage } from 'image-cache-react';
-import { PosterLoadStatus } from './LoadStatus';
-import { PosterRenderStatus } from './RenderStatus';
 import { PosterImage } from './PosterImage';
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation';
 import { Asset } from '@utils';
+import { AssetInfo } from './AssetInfo';
 
 export type PosterProps = Omit<HTMLAttributes<HTMLDivElement>, 'onFocus'> & {
   index: number;
@@ -26,7 +25,7 @@ export const Poster = ({
   onFocus,
 }: PosterProps) => {
   const { ref, focused } = useFocusable();
-  const { width, height, visibilityRef } = useImage();
+  const { width, height, visibilityRef, url } = useImage();
 
   useEffect(() => {
     if (focused) {
@@ -34,13 +33,19 @@ export const Poster = ({
     }
   }, [focused, ref]);
 
+  const hash = useMemo(() => {
+    // get url ?hash url param value
+    const hash = url?.split('?hash=')[1];
+    return hash;
+  }, [url]);
+
   return (
     <div
       ref={(node) => {
         ref.current = node;
         visibilityRef(node);
       }}
-      className={'mr-2'}
+      className={'mr-7'}
       style={{
         width: width,
         height: height,
@@ -58,12 +63,19 @@ export const Poster = ({
         pageNumber={pageNumber}
         showImmediately={showImmediately}
       />
-      <div
+      <AssetInfo
+        focused={focused}
+        index={index}
+        pageNumber={pageNumber}
+        hash={hash}
+        asset={asset}
+      />
+      {/* <div
         className={'absolute top-0 flex h-4 w-full flex-row justify-between'}
       >
         <PosterLoadStatus />
         <PosterRenderStatus />
-      </div>
+      </div> */}
     </div>
   );
 };
