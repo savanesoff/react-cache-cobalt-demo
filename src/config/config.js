@@ -7,15 +7,15 @@ const images = {
 };
 export const config = {
   image: {
-    baseUrl: `http://${host}:8080/${images.small}`,
+    baseUrl: `http://${host}:8080/${images.tiny}`,
     mimeType: 'image/png',
     colorType: 'RGBA',
     renderWidth: 155,
-    renderHeight: 210
+    renderHeight: 170
   },
 
-  topics: 2,
-  perPage: 10,
+  topics: 3,
+  perPage: 7,
   pages: 10,
   visibilityMargin: '500px'
 }; 

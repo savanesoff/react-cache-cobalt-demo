@@ -17,8 +17,8 @@ init({
   // options
   shouldFocusDOMNode: true,
   shouldUseNativeEvents: true,
-  useGetBoundingClientRect: true,
-  throttle: 180,
+  // useGetBoundingClientRect: true,
+  throttle: 300,
 });
 
 export function App() {
@@ -52,7 +52,7 @@ export function App() {
             'text-slate-300',
             'p-2',
             'w-full',
-            'text-xl',
+            'text-l',
           )}
         >
           React Image Cache Demo
@@ -71,10 +71,10 @@ export function App() {
         </div>
         <ControllerProvider
           loaders={1}
-          ram={30000}
-          video={14000}
+          ram={400}
+          video={240}
           units="MB"
-          hwRank={0.2} // 0-1
+          hwRank={0.5} // 0-1
           gpuDataFull={true}
           renderer={onRenderRequest}
           logLevel="info"
