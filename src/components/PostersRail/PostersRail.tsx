@@ -1,4 +1,4 @@
-import { BucketProvider } from 'image-cache-react';
+import { BucketProvider } from 'image-cache-preact';
 import { cn, Topic } from '@utils';
 import { HTMLAttributes } from 'react';
 import { RailHeader } from './RailHeader';

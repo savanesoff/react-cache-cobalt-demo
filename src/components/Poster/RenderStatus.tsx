@@ -1,4 +1,4 @@
-import { useImage } from 'image-cache-react';
+import { useImage } from 'image-cache-preact';
 import { useCallback, useState } from 'react';
 import { StatusBadge } from '@components';
 

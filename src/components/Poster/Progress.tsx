@@ -1,5 +1,5 @@
 import { HTMLAttributes, useCallback, useState } from 'react';
-import { useImage, UseImageEvent } from 'image-cache-react';
+import { useImage, UseImageEvent } from 'image-cache-preact';
 
 export type ProgressProps = HTMLAttributes<HTMLDivElement>;
 /**

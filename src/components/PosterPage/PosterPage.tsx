@@ -9,7 +9,7 @@ import {
   BucketProviderProps,
   ImageProvider,
   useVisibilityObserver,
-} from 'image-cache-react';
+} from 'image-cache-preact';
 import { Asset, AssetPage, fetchAssets, Topic, cn } from '@utils';
 import { Poster } from '@components';
 import { config } from '@config';

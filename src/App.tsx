@@ -1,5 +1,5 @@
 import { cn } from '@utils';
-import { ControllerProvider } from 'image-cache-react';
+import { ControllerProvider } from 'image-cache-preact';
 
 import { View } from '@components';
 import {
@@ -77,7 +77,7 @@ export function App() {
           hwRank={0.5} // 0-1
           gpuDataFull={true}
           renderer={onRenderRequest}
-          logLevel="info"
+          logLevel="error"
         >
           <>
             <CacheStats />

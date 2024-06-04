@@ -5,7 +5,7 @@ import {
   useBucket,
   UseBucketProps,
   UseImageProps,
-} from 'image-cache-react';
+} from 'image-cache-preact';
 import { useLockerAssets } from './useLockerAssets';
 import { config } from '@config';
 import { useMemo } from 'react';

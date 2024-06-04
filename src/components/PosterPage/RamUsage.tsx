@@ -1,4 +1,4 @@
-import { BucketRamUnits, useBucket } from 'image-cache-react';
+import { BucketRamUnits, useBucket } from 'image-cache-preact';
 import { useCallback, useState } from 'react';
 import { StatusBadge } from '@components';
 

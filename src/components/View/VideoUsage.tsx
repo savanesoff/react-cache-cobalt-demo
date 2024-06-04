@@ -1,4 +1,4 @@
-import { MemoryEvent, MemoryStats, useController } from 'image-cache-react';
+import { MemoryEvent, MemoryStats, useController } from 'image-cache-preact';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { StatusBadge } from '@components';
 

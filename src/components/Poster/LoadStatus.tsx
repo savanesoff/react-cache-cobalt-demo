@@ -1,5 +1,5 @@
 import { HTMLAttributes, useCallback, useState } from 'react';
-import { ImgEvent, useImage } from 'image-cache-react';
+import { ImgEvent, useImage } from 'image-cache-preact';
 import { StatusBadge } from '@components';
 
 export type LoadStatusProps = HTMLAttributes<HTMLDivElement>;

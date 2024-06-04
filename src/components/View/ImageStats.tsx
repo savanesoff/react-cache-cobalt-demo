@@ -1,14 +1,17 @@
-import { ControllerEvent, useController } from 'image-cache-react';
+import { ControllerEvent, useController } from 'image-cache-preact';
 import { useCallback, useState } from 'react';
-import { StatusBadge } from '@components';
+import { StatusBadge } from '../StatusBadge';
 
 export const ImageStats = () => {
   const [imageCount, setImageCount] = useState(0);
   const [requestCount, setRequestCount] = useState(0);
+  const [requestRendered, setRequestRendered] = useState(0);
 
   const onUpdate = useCallback((event: ControllerEvent<'update'>) => {
+    const data = event.target.getRequestsStats();
     setImageCount(event.target.cache.size);
-    setRequestCount(event.target.getRenderRequestCount());
+    setRequestCount(data.total);
+    setRequestRendered(data.rendered);
   }, []);
 
   useController({
@@ -17,8 +20,9 @@ export const ImageStats = () => {
 
   return (
     <>
-      <StatusBadge text={`I: ${imageCount}`} />
-      <StatusBadge text={`R: ${requestCount}`} />
+      <StatusBadge text={`Images: ${imageCount}`} />
+      <StatusBadge text={`Requests: ${requestCount}`} />
+      <StatusBadge text={`Rendered: ${requestRendered} `} />
     </>
   );
 };

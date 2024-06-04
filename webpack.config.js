@@ -25,6 +25,8 @@ export default (env, argv) => ({
         alias: {
             'react': 'preact/compat',
             'react-dom': 'preact/compat',
+            "react-dom": ["node_modules/preact/compat/"],
+            "react-dom/*": ["node_modules/preact/compat/*"]
         },
         mainFields: ['main'], // Ensure main field is preferred over module field
     },

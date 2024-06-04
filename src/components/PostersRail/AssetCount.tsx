@@ -1,4 +1,4 @@
-import { useBucket, BucketEvent } from 'image-cache-react';
+import { useBucket, BucketEvent } from 'image-cache-preact';
 import { useState, useCallback } from 'react';
 import { StatusBadge } from '../StatusBadge/StatusBadge';
 

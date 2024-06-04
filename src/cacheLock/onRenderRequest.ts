@@ -1,4 +1,4 @@
-import { RenderRequestEvent } from 'image-cache-react';
+import { RenderRequestEvent } from 'image-cache-preact';
 
 /**
  * A custom event handler for the render request.
@@ -32,7 +32,7 @@ export const onRenderRequest = ({ target }: RenderRequestEvent<'render'>) => {
     backgroundSize: `${size.width}px ${size.height}px`,
   };
   // set attributes
-  div.setAttribute('data-image-cache-react', 'true');
+  div.setAttribute('data-image-cache-preact', 'true');
   div.setAttribute('width', `${size.width}`);
   div.setAttribute('height', `${size.height}`);
   div.setAttribute('src', target.image.url);

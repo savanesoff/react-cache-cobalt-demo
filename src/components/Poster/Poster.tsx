@@ -1,5 +1,5 @@
 import { HTMLAttributes, useEffect, useMemo } from 'react';
-import { useImage } from 'image-cache-react';
+import { useImage } from 'image-cache-preact';
 import { PosterImage } from './PosterImage';
 import { useFocusable } from '@noriginmedia/norigin-spatial-navigation';
 import { Asset } from '@utils';

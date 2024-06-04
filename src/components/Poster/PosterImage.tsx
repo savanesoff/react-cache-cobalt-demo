@@ -1,4 +1,4 @@
-import { useImage, useBucket } from 'image-cache-react';
+import { useImage, useBucket } from 'image-cache-preact';
 import { cn, Asset } from '@utils';
 import { useState, useCallback, useMemo } from 'react';
 

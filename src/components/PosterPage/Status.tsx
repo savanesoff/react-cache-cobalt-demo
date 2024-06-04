@@ -1,4 +1,4 @@
-import { BucketEvent, useBucket } from 'image-cache-react';
+import { BucketEvent, useBucket } from 'image-cache-preact';
 import { useCallback, useState } from 'react';
 
 export const PageStatus = () => {
