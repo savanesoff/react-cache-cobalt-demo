@@ -69,8 +69,9 @@ export function App() {
             className="text-sm"
           />
         </div>
+
         <ControllerProvider
-          loaders={1}
+          loaders={2}
           ram={400}
           video={240}
           units="MB"

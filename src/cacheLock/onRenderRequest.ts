@@ -4,7 +4,10 @@ import { RenderRequestEvent } from 'image-cache-preact';
  * A custom event handler for the render request.
  * Depending on the platform and the browser, its implementation will vary
  */
-export const onRenderRequest = ({ target }: RenderRequestEvent<'render'>) => {
+export const onRenderRequest = ({
+  target,
+  renderTime,
+}: RenderRequestEvent<'render'>) => {
   // return true;
   if (!target.bucket.controller.gpuDataFull) {
     return false;
@@ -40,8 +43,16 @@ export const onRenderRequest = ({ target }: RenderRequestEvent<'render'>) => {
 
   Object.assign(div.style, style);
   document.body.appendChild(div);
+
   target.on('clear', () => {
     document.body.removeChild(div);
   });
+
+  if (!target.bucket.locked) {
+    setTimeout(() => {
+      document.body.removeChild(div);
+    }, renderTime);
+  }
+
   return true;
 };
