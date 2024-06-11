@@ -19,7 +19,7 @@
     "@noriginmedia/norigin-spatial-navigation": "^2.1.0",
     "clsx": "^2.1.1",
     "core-js": "^3.37.1",
-    "image-cache-preact": "^0.6.0",
+    "image-cache-preact": "^0.6.2",
     "lorem-ipsum": "^2.0.8",
     "preact": "^10.22.0",
     "tailwind-merge": "^2.3.0"

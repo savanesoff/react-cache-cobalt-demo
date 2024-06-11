@@ -71,14 +71,14 @@ export function App() {
         </div>
 
         <ControllerProvider
-          loaders={2}
+          loaders={6}
           ram={400}
           video={240}
           units="MB"
-          hwRank={0.5} // 0-1
+          hwRank={0.8} // 0-1
           gpuDataFull={true}
           renderer={onRenderRequest}
-          logLevel="error"
+          logLevel="verbose"
         >
           <>
             <CacheStats />

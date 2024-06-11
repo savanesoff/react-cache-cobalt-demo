@@ -10,12 +10,14 @@ export const config = {
     baseUrl: `http://${host}:8080/${images.tiny}`,
     mimeType: 'image/png',
     colorType: 'RGBA',
-    renderWidth: 155,
-    renderHeight: 170
+    renderWidth: 200,
+    renderHeight: 300
   },
 
-  topics: 3,
-  perPage: 7,
-  pages: 10,
-  visibilityMargin: '500px'
+  topics: 1,
+  perPage: 10,
+  pages: 1,
+  visibilityMargin: '400px',
+  tmdb: true,
+  tmdbTopics: ['popular', 'top_rated', 'upcoming', 'now_playing'],
 }; 

@@ -18,8 +18,8 @@ importers:
         specifier: ^3.37.1
         version: 3.37.1
       image-cache-preact:
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.6.2
+        version: 0.6.2
       lorem-ipsum:
         specifier: ^2.0.8
         version: 2.0.8
@@ -2272,11 +2272,12 @@ packages:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
 
-  image-cache-preact@0.6.0:
-    resolution: {integrity: sha512-V9B/pRf/hxhjLfDOecSXTaeHEyEkvYjESXk243C1HfcFJcp90T1OiCpYhSiCzDTuBtoOHv4zc42OYwCFaMMSbw==}
+  image-cache-preact@0.6.2:
+    resolution: {integrity: sha512-aUE8qjW+zfreZYIj7NxvrCXoFYZACMmRcSruR8LEqv3LmDqT5atgxOjajX0+Ufx8hu3Xs4Kt12xxrlq+T126Ew==}
 
-  image-cache-pro@0.5.1:
-    resolution: {integrity: sha512-TQcxoPp/nJWmZIJ42Wo3y/nz6nu5GRfPx1GS46KpptourW5Kie47AKvQ/1MjqfqFKh6hs7w9i7ruAZVmsk7oQA==}
+  image-cache-pro@0.6.0:
+    resolution: {integrity: sha512-7Y7hty/zoySxaD63YvbRU0GcsxRuxg+hAbK5Cy09DZalB3KBJH7INfC2vzPETN03EW+rWp2djcAirRF7osw6ow==}
+    engines: {node: '>=18.19.1', pnpm: '>=9.1.4'}
 
   immutable@4.3.6:
     resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
@@ -6401,13 +6402,13 @@ snapshots:
 
   ignore@5.3.1: {}
 
-  image-cache-preact@0.6.0:
+  image-cache-preact@0.6.2:
     dependencies:
-      image-cache-pro: 0.5.1
+      image-cache-pro: 0.6.0
       preact: 10.22.0
       tslib: 2.6.2
 
-  image-cache-pro@0.5.1:
+  image-cache-pro@0.6.0:
     dependencies:
       events: 3.3.0
       tslib: 2.6.2
